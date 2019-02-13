@@ -1,0 +1,49 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: k8s-elk
+  name: logstash
+spec:
+  type: LoadBalancer
+  selector:
+    app: logstash
+  ports:
+    - name: beats
+      port: 8751
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: k8s-elk
+  name: logstash
+  labels:
+    app: logstash
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: logstash
+  template:
+    metadata:
+      labels:
+        app: logstash
+    spec:
+      containers:
+        - name: logstash
+          image: docker.elastic.co/logstash/logstash:6.5.4
+          ports:
+            - containerPort: 8751
+          volumeMounts:
+            - name: logstash-pipelines
+              mountPath: /usr/share/logstash/pipeline
+            - name: logstash-tls
+              mountPath: /usr/share/logstash/ssl
+
+      # spec.template.spec.volumes
+      volumes:
+        - name: logstash-pipelines
+          configMap:
+            name: logstash-pipelines
+        - name: logstash-tls
+          secret:
+            secretName: logstash-tls
