@@ -101,9 +101,14 @@ In a separate terminal, run:
 > curl http://localhost:9200/_cat/nodes?v
 ```
 
-### Step 4 - 
+### Step 6 - Start Kibana
+create a Kibana Service and Deployment and verify if pod and service are ready.
+```
+> kubectl apply -f 3_kibana
+> kubectl get all --namespace=k8s-elk
+```
 
-### Step 4 - 
+### Step 7 - 
 
 ### Step 4 - 
 
