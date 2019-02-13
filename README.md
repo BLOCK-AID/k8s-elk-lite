@@ -33,7 +33,18 @@ The purpose of this project is to provide starter files for deploying a high per
     --node-size=t2.xlarge \
     --yes
 ```
-### Step 3 - Validate cluster : All instances created by KOPS are build with ASG (Auto Scaling Groups) - ASG instances are automatically rebuilt and monitored if they suffer a failure:
+### Step 3 - Validate cluster
+All instances created by KOPS are build with ASG (Auto Scaling Groups) - ASG instances are automatically rebuilt and monitored if they suffer a failure:
+```
+> kops validate cluster
+```
+### Step 4 - Explore K8S Cluster
+List nodes & pods (should be empty as no Docker containers have been deployed)
+```
+> kubectl get all
+> kubectl get nodes --show-labels
+> kubectl get pods
+```
 
 
 ## K8S-ELK Cluster on AWS
