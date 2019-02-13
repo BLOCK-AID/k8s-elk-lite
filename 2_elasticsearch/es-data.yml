@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  namespace: k8s-elk
+  namespace: k8s-elk-lite
   name: elasticsearch-data
   labels:
     app: elasticsearch
@@ -143,7 +143,7 @@ spec:
 apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
-  namespace: k8s-elk
+  namespace: k8s-elk-lite
   name: elasticsearch-data
 spec:
   maxUnavailable: 1

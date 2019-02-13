@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: k8s-elk
+  namespace: k8s-elk-lite
   name: elasticsearch-master
   labels:
     component: elasticsearch
@@ -112,7 +112,7 @@ spec:
 apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
-  namespace: k8s-elk
+  namespace: k8s-elk-lite
   name: elasticsearch-master
 spec:
   maxUnavailable: 1

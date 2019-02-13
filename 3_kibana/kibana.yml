@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: k8s-elk
+  namespace: k8s-elk-lite
   name: kibana
   labels:
     app: kibana
@@ -15,7 +15,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: k8s-elk
+  namespace: k8s-elk-lite
   name: kibana
   labels:
     app: kibana

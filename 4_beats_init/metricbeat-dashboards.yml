@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  namespace: k8s-elk
+  namespace: k8s-elk-lite
   name: metricbeat-dashboard-init
 spec:
   template:

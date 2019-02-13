@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  namespace: k8s-elk
+  namespace: k8s-elk-lite
   name: logstash-tls
 type: Opaque
 data:

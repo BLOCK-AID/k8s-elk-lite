@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: k8s-elk
+  namespace: k8s-elk-lite
   name: elasticsearch-master
   labels:
     app: elasticsearch
@@ -20,7 +20,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: k8s-elk
+  namespace: k8s-elk-lite
   name: elasticsearch
   labels:
     app: elasticsearch
