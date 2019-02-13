@@ -48,7 +48,7 @@ spec:
       # spec.template.spec.containers
       containers:
         - name: elasticsearch
-          image: docker.elastic.co/elasticsearch/elasticsearch:6.5.2
+          image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
           ports:
             - containerPort: 9200
               name: http
@@ -69,7 +69,7 @@ spec:
           # spec.template.spec.containers[elasticsearch].env
           env:
             - name: discovery.zen.ping.unicast.hosts
-              value: "elasticsearch-master.k8s-elk.svc.cluster.local,elasticsearch.k8s-elk.svc.cluster.local"
+              value: "elasticsearch-master.k8s-elk-lite.svc.cluster.local,elasticsearch.k8s-elk-lite.svc.cluster.local"
             - name: ES_JAVA_OPTS
               value: -Xms512m -Xmx512m
             - name: discovery.zen.minimum_master_nodes

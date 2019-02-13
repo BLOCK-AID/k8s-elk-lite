@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: kibana
-          image: docker.elastic.co/kibana/kibana:6.5.2
+          image: docker.elastic.co/kibana/kibana:6.5.4
           ports:
             - containerPort: 5601
           env:
@@ -42,4 +42,4 @@ spec:
             - name: SERVER_HOST
               value: "0.0.0.0"
             - name: ELASTICSEARCH_URL
-              value: http://elasticsearch.k8s-elk.svc.cluster.local:9200
+              value: http://elasticsearch.k8s-elk-lite.svc.cluster.local:9200

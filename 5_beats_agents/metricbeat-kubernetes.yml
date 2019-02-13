@@ -17,7 +17,7 @@ data:
       - add_cloud_metadata:
 
     output.elasticsearch:
-      hosts: ['http://elasticsearch.k8s-elk.svc.cluster.local:9200']
+      hosts: ['http://elasticsearch.k8s-elk-lite.svc.cluster.local:9200']
 ---
 apiVersion: v1
 kind: ConfigMap

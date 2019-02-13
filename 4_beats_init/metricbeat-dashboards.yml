@@ -11,7 +11,7 @@ spec:
         image: docker.elastic.co/beats/metricbeat:6.5.4
         command: [ "metricbeat", "setup", "--dashboards",
           "-E", "output.logstash.enabled=false",
-          "-E", 'output.elasticsearch.hosts=["elasticsearch.k8s-elk.svc.cluster.local:9200"]',
-          "-E", 'setup.kibana.host="kibana.k8s-elk.svc.cluster.local:5601"' ]
+          "-E", 'output.elasticsearch.hosts=["elasticsearch.k8s-elk-lite.svc.cluster.local:9200"]',
+          "-E", 'setup.kibana.host="kibana.k8s-elk-lite.svc.cluster.local:5601"' ]
       restartPolicy: Never
   backoffLimit: 4

@@ -11,6 +11,6 @@ spec:
         image: docker.elastic.co/beats/filebeat:6.5.4
         command: [ "filebeat", "setup", "--template",
           "-E", "output.logstash.enabled=false",
-          "-E", 'output.elasticsearch.hosts=["elasticsearch.k8s-elk.svc.cluster.local:9200"]' ]
+          "-E", 'output.elasticsearch.hosts=["elasticsearch.k8s-elk-lite.svc.cluster.local:9200"]' ]
       restartPolicy: Never
   backoffLimit: 4
