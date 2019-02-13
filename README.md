@@ -23,7 +23,7 @@ The purpose of this project is to provide starter files for deploying a high per
 > aws ec2 describe-availability-zones --region us-east-2
 ```
 ### Step 2 - Create K8S cluster 
-Use KOPS for the following K8S HA: (5 K8S nodes & 3 K8S masters in multiple AZs)
+Use KOPS for the following K8S HA: (5 K8S nodes & 3 K8S masters in multiple AZs).
 ```
 > kops create cluster ${NAME} \
     --master-count=3 \
@@ -35,18 +35,21 @@ Use KOPS for the following K8S HA: (5 K8S nodes & 3 K8S masters in multiple AZs)
     --yes
 ```
 ### Step 3 - Validate cluster
-All instances created by KOPS are build with ASG (Auto Scaling Groups) - ASG instances are automatically rebuilt and monitored if they suffer a failure:
+All instances created by KOPS are build with ASG (Auto Scaling Groups) - ASG instances are automatically rebuilt and monitored if they suffer a failure.
 ```
 > kops validate cluster
 ```
 ### Step 4 - Explore K8S Cluster
-List nodes & pods (should be empty as no Docker containers have been deployed)
+List nodes & pods (should be empty as no Docker containers have been deployed).
 ```
 > kubectl get all
 > kubectl get nodes --show-labels
 > kubectl get pods
 ```
-
+### Step 5 - Delete cluster ## CAUTION
+```
+> kops delete cluster ${NAME} --yes
+```
 
 ## K8S-ELK Cluster on AWS
 
