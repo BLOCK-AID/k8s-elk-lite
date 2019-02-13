@@ -17,9 +17,11 @@ The purpose of this project is to provide starter files for deploying a high per
     + 2 ELK Data Nodes
     
 ### Step 1 - Setup KOPS environment variable to AWS S3 bucket and cluster AWS Availability Zone:
-os> export NAME=blockaid-k8s-aws.k8s.local
-os> export KOPS_STATE_STORE=s3://blockaid-k8s-aws-bucket
-os> aws ec2 describe-availability-zones --region us-east-2
+```
+*export NAME=blockaid-k8s-aws.k8s.local*
+*export KOPS_STATE_STORE=s3://blockaid-k8s-aws-bucket*
+*aws ec2 describe-availability-zones --region us-east-2*
+```
 
 ## K8S-ELK Cluster on AWS
 
