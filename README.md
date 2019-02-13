@@ -140,3 +140,16 @@ Create a Service and Deployment for Logstash.  Verify its creation.
 ```
 
 ## Next Steps
+These next steps will greatly depend on how your "Landing Zone" has been defined in terms of security, storage, private/public subnet, and RBAC requirements.
+
+### Logstash
+- Setup DNS using public IP of LoadBalancer:
+```
+> kubectl describe service/logstash --namespace=k8s-elk-lite | grep Ingress
+```
+Once the DNS is setup correctly, a query of the host address should return the LoadBalancer Ingress's IP address:
+```
+> dig logstash.mydnsname.com
+```
+### Kibana
+We could expose Kibana through an external authentication method and also setup a public facing DNS.
