@@ -105,13 +105,37 @@ In a separate terminal, run:
 create a Kibana Service and Deployment and verify if pod and service are ready.
 ```
 > kubectl apply -f 3_kibana
+> kubectl get all --namespace=k8s-elk-lite
+
+Forward the local port 5601 to port 5601 on this Pod:
+> kubectl port-forward kibana-xxxxxxxxxxxxxxxxxx 5601:5601 --namespace=k8s-elk-lite
+```
+Then try browser: http://localhost:5601
+
+### Step 7 - Configure Kibana with Beat
+Set up Index Templates and Kibana dashboards
+```
+> kubectl apply -f 4_beats_init
+> kubectl get jobs --namespace=k8s-elk-lite
+```
+
+### Step 8 - Collect Logs and Metrics
+Start Filebeat and Metricbeat Daemons.  Verify documents.
+```
+> kubectl apply -f 5_beats_agents
+> kubectl get all --namespace=k8s-elk-lite
+
+Connect to Kibana by opening a tunnel:
+> kubectl port-forward service/kibana 5601 --namespace=k8s-elk-lite
+```
+Then try browser: http://localhost:5601
+
+### Step 9 - Start Logstash
+Create a Service and Deployment for Logstash.  Verify its creation.
+```
+> kubectl apply -f 6_logstash
 > kubectl get all --namespace=k8s-elk
 ```
 
-### Step 7 - 
-
-### Step 4 - 
-
-### Step 4 - 
-
 ## Next Steps
+
