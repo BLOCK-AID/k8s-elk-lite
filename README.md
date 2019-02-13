@@ -18,7 +18,7 @@ The purpose of this project is to provide starter files for deploying a high per
     
 ### Step 1 - Setup KOPS environment variable to AWS S3 bucket and cluster AWS Availability Zone:
 ```
-> export NAME=myk8snamespace
+> export NAME=k8s-elk-lite
 > export KOPS_STATE_STORE=s3://k8s-aws-bucket
 > aws ec2 describe-availability-zones --region us-east-2
 ```
@@ -61,11 +61,24 @@ CAUTION - Before executing any of the next steps make sure you are at the root d
   - /5_beats_agents
   - /6_logstash
 
-### Step 1 - 
+### Step 1 - Set Root directory
+Go to root directory of main templates
+```
+> cd /github/k8s-elk-lite
+```
 
-### Step 2 - 
+### Step 2 - Create K8S Namespace
+Apply the namespace file in the 1_k8s_global directory and verify its creation
+```
+> kubectl apply -f 1_k8s-global/namespace.yml
+> kubectl get namespaces
+```
 
-### Step 3 - 
+### Step 3 - Create AWS storage
+```
+> kubectl apply -f 1_k8s-global/aws-storage.yml
+> kubectl describe sc --namespace=k8s-elk-lite
+```
 
 ### Step 4 - 
 
