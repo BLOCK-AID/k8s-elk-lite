@@ -1,13 +1,14 @@
 # k8s-elk-lite
 Kubernetes Elasticsearch deployment to AWS
 
-The purpose of this project is to provide starter files for deploying a high performance Elasticsearch cluster on Kubernetes running on AWS. 
+The purpose of this project is to provide starter files for deploying a high performance Elasticsearch cluster on Kubernetes running on AWS.
 
 ### Pre-requsites
 + Docker is installed
 + Kubernetes is installed with:
   + kops
   + kubectl
++ AWS SDK with proper keys
 
 ## K8S-AWS Cluster
 ### Topology
@@ -15,14 +16,14 @@ The purpose of this project is to provide starter files for deploying a high per
   + 5 K8S Data Nodes:
     + 3 ELK Master Nodes
     + 2 ELK Data Nodes
-    
+
 ### Step 1 - Setup KOPS environment variable to AWS S3 bucket and cluster AWS Availability Zone:
 ```
-> export NAME=k8s-elk-lite
+> export NAME=k8s-elk-lite-aws.k8s.local
 > export KOPS_STATE_STORE=s3://k8s-aws-bucket
 > aws ec2 describe-availability-zones --region us-east-2
 ```
-### Step 2 - Create K8S cluster 
+### Step 2 - Create K8S cluster
 Use KOPS for the following K8S HA: (5 K8S nodes & 3 K8S masters in multiple AZs).
 ```
 > kops create cluster ${NAME} \
@@ -138,4 +139,3 @@ Create a Service and Deployment for Logstash.  Verify its creation.
 ```
 
 ## Next Steps
-
