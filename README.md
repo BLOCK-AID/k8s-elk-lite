@@ -134,7 +134,7 @@ Then try browser: http://localhost:5601
 Create a Service and Deployment for Logstash.  Verify its creation.
 ```
 > kubectl apply -f 6_logstash
-> kubectl get all --namespace=k8s-elk
+> kubectl get all --namespace=k8s-elk-lite
 ```
 
 ## Next Steps
