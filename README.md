@@ -5,7 +5,7 @@ The purpose of this project is to provide starter files for deploying a high per
 
 ### Pre-requsites
 + Docker is installed
-+ Kubernets is installed with:
++ Kubernetes is installed with:
   + kops
   + kubectl
 
@@ -22,6 +22,19 @@ The purpose of this project is to provide starter files for deploying a high per
 > export KOPS_STATE_STORE=s3://k8s-aws-bucket
 > aws ec2 describe-availability-zones --region us-east-2
 ```
+### Step 2 - Create K8S cluster with using KOPS with the following K8S HA: (5 K8S nodes & 3 K8S masters in multiple AZs)
+```
+> kops create cluster ${NAME} \
+    --master-count=3 \
+    --master-zones us-east-2a,us-east-2b,us-east-2c \
+    --master-size=c4.large \
+    --node-count=5 \
+    --zones=us-east-2a,us-east-2b,us-east-2c \
+    --node-size=t2.xlarge \
+    --yes
+```
+### Step 3 - Validate cluster : All instances created by KOPS are build with ASG (Auto Scaling Groups) - ASG instances are automatically rebuilt and monitored if they suffer a failure:
+
 
 ## K8S-ELK Cluster on AWS
 
