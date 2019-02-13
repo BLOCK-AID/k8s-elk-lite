@@ -68,17 +68,44 @@ Go to root directory of main templates
 ```
 
 ### Step 2 - Create K8S Namespace
-Apply the namespace file in the 1_k8s_global directory and verify its creation
+Apply the namespace file in the 1_k8s_global directory and verify its creation.
 ```
 > kubectl apply -f 1_k8s-global/namespace.yml
 > kubectl get namespaces
 ```
 
 ### Step 3 - Create AWS storage
+Create the AWS storage and verify its creation.
 ```
 > kubectl apply -f 1_k8s-global/aws-storage.yml
 > kubectl describe sc --namespace=k8s-elk-lite
 ```
+
+### Step 4 - Create Elasticsearch Cluster
+Create 3 ELK Master Nodes and 2 ELK Data Nodes.  Verify its creation.
+```
+> kubectl apply -f 2_elasticsearch
+> kubectl get all --namespace=k8s-elk-lite
+> kubectl rollout status sts/elasticsearch-data --namespace=k8s-elk-lite
+> kubectl describe pod/elasticsearch-data-0 --namespace=k8s-elk-lite
+```
+
+### Step 5 - Access Elasticsearch URL
+Check that your Elasticsearch cluster is functioning correctly by performing a request against the REST API:
+```
+> kubectl port-forward elasticsearch-data-0 9200:9200 --namespace=k8s-elk-lite
+
+In a separate terminal, run:
+> curl http://localhost:9200/_cluster/state?pretty
+> curl http://localhost:9200/_cluster/health?pretty
+> curl http://localhost:9200/_cat/nodes?v
+```
+
+### Step 4 - 
+
+### Step 4 - 
+
+### Step 4 - 
 
 ### Step 4 - 
 
