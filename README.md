@@ -9,6 +9,7 @@ The purpose of this project is to provide starter files for deploying a high per
   + kops
   + kubectl
 + AWS SDK with proper keys
++ AWS S3 bucket for example: s3://k8s-aws-bucket
 
 ## K8S-AWS Cluster
 ### Topology
