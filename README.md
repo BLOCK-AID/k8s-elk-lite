@@ -46,12 +46,26 @@ List nodes & pods (should be empty as no Docker containers have been deployed).
 > kubectl get nodes --show-labels
 > kubectl get pods
 ```
-### Step 5 - Delete cluster ## CAUTION
+### Step 5 - Delete cluster - CAUTION
 ```
 > kops delete cluster ${NAME} --yes
 ```
 
 ## K8S-ELK Cluster on AWS
+CAUTION - Before executing any of the next steps make sure you are at the root directory called k8s-elk-lite, which contains the following sub-directories:
+- 1_k8s-global
+- 2_elasticsearch
+- 3_kibana
+- 4_beats_init
+- 5_beats_agents
+- 6_logstash
 
+### Step 1 - 
+
+### Step 2 - 
+
+### Step 3 - 
+
+### Step 4 - 
 
 ## Next Steps
