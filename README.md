@@ -21,7 +21,7 @@ The purpose of this project is to provide starter files for deploying a high per
 ### Step 1 - Setup KOPS environment variable to AWS S3 bucket and cluster AWS Availability Zone:
 ```
 > export NAME=k8s-elk-lite-aws.k8s.local
-> export KOPS_STATE_STORE=s3://k8s-aws-bucket
+> export KOPS_STATE_STORE=s3://blockaid-k8s-aws-bucket
 > aws ec2 describe-availability-zones --region us-east-2
 ```
 ### Step 2 - Create K8S cluster
@@ -36,6 +36,23 @@ Use KOPS for the following K8S HA: (5 K8S nodes & 3 K8S masters in multiple AZs)
     --node-size=t2.xlarge \
     --yes
 ```
+
+If cluster already exist and you have proper AWS credential and key (pem), perform the following tasks (without existing context!):
+```
+1. Use scp to safely copy the master node config (/etc/kubernetes/kube.conf) to the client ($HOME/.kube/config)
+> mkdir $HOME/.kube
+> scp root@<master-public-ip>:/etc/kubernetes/kube.conf $HOME/.kube/config
+
+2. Show the kubectl config content:
+> kubectl config view
+
+3. Select target context
+> kubectl config use-context k8s-elk-lite-aws.k8s.local
+
+4. Verify current context
+> kubectl config current-context
+```
+
 ### Step 3 - Validate cluster
 All instances created by KOPS are build with ASG (Auto Scaling Groups) - ASG instances are automatically rebuilt and monitored if they suffer a failure.
 ```
